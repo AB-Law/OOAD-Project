@@ -33,6 +33,7 @@ public class Launcher {
         Engine engine=new Engine(sumer);
         System.out.print("Enter number of clothes to recommend: ");
         ArrayList<ClothRating> recommendations=engine.getRecommendedClothes(new Scanner(System.in).nextInt());
+        System.out.print("Please wait. Processing dataset....");
         for (ClothRating m: recommendations){
             System.out.println(m);
         }
