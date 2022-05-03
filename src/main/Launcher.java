@@ -1,6 +1,6 @@
 package main;
 
-import model.MovieRatingBasedOrder;
+import model.ClothRating;
 
 import java.io.BufferedReader;
 import java.io.FileReader;
@@ -32,8 +32,8 @@ public class Launcher {
         }
         Engine engine=new Engine(sumer);
         System.out.print("Enter number of clothes to recommend: ");
-        ArrayList<MovieRatingBasedOrder> recommendations=engine.getRecommendedMovies(new Scanner(System.in).nextInt());
-        for (MovieRatingBasedOrder m: recommendations){
+        ArrayList<ClothRating> recommendations=engine.getRecommendedClothes(new Scanner(System.in).nextInt());
+        for (ClothRating m: recommendations){
             System.out.println(m);
         }
     }

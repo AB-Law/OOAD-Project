@@ -1,7 +1,7 @@
 package appdata;
 
-import model.Movie;
-import model.MovieRatingBasedOrder;
+import model.Cloth;
+import model.ClothRating;
 import model.User;
 
 import java.util.ArrayList;
@@ -9,21 +9,21 @@ import java.util.TreeSet;
 
 public class Data {
     private static Data data;
-    TreeSet<Movie> movies;
+    TreeSet<Cloth> clothes;
     User subject;
-    ArrayList<MovieRatingBasedOrder> orderedRecommend;
+    ArrayList<ClothRating> orderedRecommend;
 
     public Data() {
-        this.movies =new TreeSet<Movie>();
+        this.clothes =new TreeSet<Cloth>();
         this.subject=new User();
         this.orderedRecommend=new ArrayList<>();
     }
 
-    public ArrayList<MovieRatingBasedOrder> getOrderedRecommend() {
+    public ArrayList<ClothRating> getOrderedRecommend() {
         return orderedRecommend;
     }
 
-    public void setOrderedRecommend(ArrayList<MovieRatingBasedOrder> orderedRecommend) {
+    public void setOrderedRecommend(ArrayList<ClothRating> orderedRecommend) {
         this.orderedRecommend = orderedRecommend;
     }
 
@@ -37,8 +37,8 @@ public class Data {
     }
 
 
-    public TreeSet<Movie> getMovies() {
-        return movies;
+    public TreeSet<Cloth> getClothes() {
+        return clothes;
     }
 
 }

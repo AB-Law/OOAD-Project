@@ -4,12 +4,12 @@ import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
 
-public class MovieRatingBasedOrder implements Comparable {
+public class ClothRating implements Comparable {
     private int id;
     private double ratingSum;
     private int userNum;
 
-    public MovieRatingBasedOrder(int id, double rating, int userNum) {
+    public ClothRating(int id, double rating, int userNum) {
         this.id = id;
         this.ratingSum = rating;
         this.userNum = userNum;
@@ -20,7 +20,7 @@ public class MovieRatingBasedOrder implements Comparable {
         //required
 
         double thisavg=this.ratingSum/this.userNum;
-        double thatAvg=((MovieRatingBasedOrder)o).ratingSum/((MovieRatingBasedOrder)o).userNum;
+        double thatAvg=((ClothRating)o).ratingSum/((ClothRating)o).userNum;
         return Double.compare(thisavg,thatAvg);
 
 

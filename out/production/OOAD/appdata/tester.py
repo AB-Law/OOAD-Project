@@ -6,7 +6,7 @@ def create_dataset():
     dataset = []
     for i in range(1,1508):
         #creates random numbers of current value of i
-        for j in range(0,random.randint(1,25)):
+        for j in range(0,random.randint(3,25)):
             #pick a random number between 1 and 17770
             var = random.randint(1,17770)
             #create a one decimal float between 1 and 5

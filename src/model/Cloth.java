@@ -1,16 +1,16 @@
 package model;
 
-public class Movie implements Comparable {
-    private int moviewID;
+public class Cloth implements Comparable {
+    private int clothwID;
     private int usersNum;
     private double ratingSum;
 
-    public Movie(int moviewID) {
-        this.moviewID = moviewID;
+    public Cloth(int clothwID) {
+        this.clothwID = clothwID;
     }
 
-    public void setMoviewID(int moviewID) {
-        this.moviewID = moviewID;
+    public void setClothwID(int clothwID) {
+        this.clothwID = clothwID;
     }
 
     public int getUsers() {
@@ -29,13 +29,13 @@ public class Movie implements Comparable {
         this.ratingSum = ratingSum;
     }
 
-    public int getMoviewID() {
-        return moviewID;
+    public int getClothwID() {
+        return clothwID;
     }
 
 
     @Override
     public int compareTo(Object o) {
-        return Integer.compare(this.moviewID, ((Movie) o).moviewID);
+        return Integer.compare(this.clothwID, ((Cloth) o).clothwID);
     }
 }
