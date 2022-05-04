@@ -4,6 +4,7 @@ import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
 
+//Creates a ClothRating model class which is used to implement the ClothRating class
 public class ClothRating implements Comparable {
     private int id;
     private double ratingSum;

@@ -4,26 +4,26 @@ import java.util.ArrayList;
 
 public class User implements Comparable {
     private int userID;
-    private ArrayList<Integer> watched;
+    private ArrayList<Integer> reviewed;
 
     public User() {
-        this.watched=new ArrayList<>();
+        this.reviewed=new ArrayList<>();
     }
 
     public int getUserID() {
         return userID;
     }
 
-    public ArrayList<Integer> getWatched() {
-        return watched;
+    public ArrayList<Integer> getReviewed() {
+        return reviewed;
     }
 
     public void setUserID(int userID) {
         this.userID = userID;
     }
 
-    public void setWatched(ArrayList<Integer> watched) {
-        this.watched= watched;
+    public void setReviewed(ArrayList<Integer> reviewed) {
+        this.reviewed= reviewed;
     }
 
     @Override

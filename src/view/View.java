@@ -16,27 +16,24 @@ public class View {
  private JLabel colourLabel;
  private JLabel sizeLabel;
  private JLabel headLabel;
-// public JTextField carcompTextfield;
-// public JTextField carModelTextfield;
-// private JButton carCompSaveButton;
-// public JButton b;
-// public JButton b2;
+
  public JButton enterbutton;
+ public JButton reviewbutton;
+ 
  public JComboBox<String> clothType;
  public JComboBox<String> colo;
  public JComboBox<String> Size;
-// private JButton carModelSaveButton;
-// public JButton hello;
-// private JButton bye;
+
  
  public JTextField numbertextField;
  public View(String title) {
   frame = new JFrame(title);
   frame.getContentPane().setLayout(new BorderLayout());
   frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-  frame.setSize(700,700);
+  frame.setSize(800,800);
   frame.setLocationRelativeTo(null);
   frame.setVisible(true);
+  // Create UI elements
   clothType = new JComboBox<String>(
           new String[] { "Pants", "Shoes", "Hat", "Glasses", "Sunglasses", "T-Shirt", "Jacket", "Skirt", "Dress", "Belt", "Socks"});
   colo = new JComboBox<String>(
@@ -44,10 +41,11 @@ public class View {
   Size = new JComboBox<String>(
 		  new String[] {"Small","Medium", "Large", "X-Larg", "XX-Large", "XXXL", "XXXXL"});
   enterbutton = new JButton("Enter Choice");
-  // Create UI elements
+  reviewbutton = new JButton("Review");
+  
   shirtLabel = new JLabel("CHOOSE SHIRT TYPE");
   colourLabel = new JLabel("CHOOSE COLOUR");
-  sizeLabel = new JLabel("CHOOSE SIZE");
+  sizeLabel = new JLabel("");
   headLabel = new JLabel("CLOTHING RECOMMENDATION ENGINE");
   
 //  carcompTextfield = new JTextField();
@@ -70,7 +68,10 @@ public class View {
   Size.setBounds(335,110,145,30);
   
   frame.add(enterbutton);
-  enterbutton.setBounds(150,155,170,25);
+  enterbutton.setBounds(90,155,170,25);
+  
+  frame.add(reviewbutton);
+  reviewbutton.setBounds(300,155,170,25);
   
   
 //  frame.setBackground(Color.red);
@@ -82,16 +83,7 @@ public class View {
  frame.add(colourLabel);
  sizeLabel.setBounds(100,80,145,30);
  frame.add(sizeLabel);
-// carModelTextfield.setBounds(150,155,170,25);
-// frame.add(carModelTextfield);
-// hello.setBounds(350,116,170,25);
-// frame.add(hello);
-// bye.setBounds(350,155,170,25);
-// frame.add(bye);
-//  b.setBounds(50,200,145,30);  
-//  frame.add(b); 
-//  b2.setBounds(200,200,145,30);  
-//  frame.add(b2); 
+
  }
   
    
@@ -125,49 +117,10 @@ public class View {
  public void setsizeLabel(JLabel sizeLabel) {
 	  this.sizeLabel = sizeLabel;
 	 }
-// public JTextField getcarcompTextfield() {
-//  return carcompTextfield;
-// }
-// public void setcarcompTextfield(JTextField carcompTextfield) {
-//  this.carcompTextfield = carcompTextfield;
-// }
-// public JTextField getcarModelTextfield() {
-//  return carModelTextfield;
-// }
-// public void setcarModelTextfield(JTextField carModelTextfield) {
-//  this.carModelTextfield = carModelTextfield;
-// }
-// public JButton getcarCompSaveButton() {
-//  return carCompSaveButton;
-// }
  public JButton getEnterButton() {
 	  return enterbutton;}
-// public void setcarCompSaveButton(JButton carCompSaveButton) {
-//  this.carCompSaveButton = carCompSaveButton;
-// }
-// public JButton getcarModelSaveButton() {
-//  return carModelSaveButton;
-// }
-// public void setcarModelSaveButton(JButton carModelSaveButton) {
-//  this.carModelSaveButton = carModelSaveButton;
-// }
-// public JButton getHello() {
-//  return hello;
-// }
-// public void setHello(JButton hello) {
-//  this.hello = hello;
-// }
-// public JButton getBye() {
-//  return bye;
-// }
-// public JButton b() {
-//	 return b;
-// }
-// public JButton b2() {
-//	 return b2;
-// }
-// public void setBye(JButton bye) {
-//  this.bye = bye;
-// }
-
+    public JButton getReviewButton() {
+      return reviewbutton;}
+  
+  
 }

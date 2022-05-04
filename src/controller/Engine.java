@@ -8,6 +8,7 @@ import java.io.*;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Iterator;
+import java.util.Scanner;
 
 class Engine {
     public View view;
@@ -24,18 +25,37 @@ class Engine {
        s1[0]=view.clothType.getItemAt(view.clothType.getSelectedIndex());
        s1[1]=view.Size.getItemAt(view.Size.getSelectedIndex());
        s1[2]=view.colo.getItemAt(view.colo.getSelectedIndex());
-      System.out.println(s1[0]);
+        //print out s1
+         System.out.println(s1[0]+ "\n"+ s1[1] + "\n"+ s1[2]);
       ArrayList<ClothRating> recommendations=getRecommendedClothes(5,s1[0],s1[1],s1[2]); 
       System.out.print("Please wait. Processing dataset....\n");
       for (ClothRating m: recommendations){
           System.out.println(m);
+       
+
          
         }
     });
+    view.getReviewButton().addActionListener(e -> {
+        String[] s1=new String[3];
+       s1[0]=view.clothType.getItemAt(view.clothType.getSelectedIndex());
+       s1[1]=view.Size.getItemAt(view.Size.getSelectedIndex());
+       s1[2]=view.colo.getItemAt(view.colo.getSelectedIndex());
+        //print out s1
+         System.out.println(s1[0]+ "\n"+ s1[1] + "\n"+ s1[2]);
+      ArrayList<ClothRating> recommendations=getRecommendedClothes(5,s1[0],s1[1],s1[2]); 
+      System.out.print("Please wait. Processing dataset....\n");
+      for (ClothRating m: recommendations){
+          System.out.println(m);
+        System.out.println("Enter the rating for this item: ");
+        Scanner sc=new Scanner(System.in);
+        float rating=sc.nextFloat();}
+        System.out.println("Review submitted");
     }
-    public void sendLauncher()
-    {
-       
+        );
+    
+
+
     }
 
     Engine(int subjectUser) {
@@ -48,7 +68,7 @@ class Engine {
         Iterator iterator=Data.getData().getClothes().iterator();
         while (iterator.hasNext()){
             Cloth m=(Cloth) iterator.next();
-            if (!Data.getData().getSubject().getWatched().contains((Integer)m.getClothwID())){
+            if (!Data.getData().getSubject().getReviewed().contains((Integer)m.getClothwID())){
                 Data.getData().getOrderedRecommend().add(new ClothRating(m.getClothwID(),m.getRatingSum(),m.getUsers()));
             }
         }
@@ -63,7 +83,7 @@ class Engine {
             while (line != null) {
                 String[] attr = line.split(" ");
                 if (attr[0].equals(String.valueOf(user))){
-                    Data.getData().getSubject().getWatched().add(Integer.valueOf(attr[1]));
+                    Data.getData().getSubject().getReviewed().add(Integer.valueOf(attr[1]));
                 }else{
                     //if(Double.valueOf(attr[2])>2.5)
                     reduceToMapCloth(attr);
@@ -79,11 +99,11 @@ class Engine {
     private void reduceToMapCloth(String[] attr) {
         Cloth m = new Cloth(Integer.parseInt(attr[1]));
         if (!Data.getData().getClothes().contains(m)) {
-            Data.getData().getClothes().add(m);              //add movie to TreeSet if not already added
+            Data.getData().getClothes().add(m);              //add clothes to TreeSet if not already added
         }
         Iterator i = Data.getData().getClothes().iterator();
         boolean found = false;
-        while (i.hasNext() && !found) {                     //Traverse to movie in the TreeSet
+        while (i.hasNext() && !found) {                     //Traverse to cloth in the TreeSet
             Cloth im = (Cloth) i.next();
             if (im.getClothwID() == Integer.parseInt(attr[1])) { found = true;
                 im.setUsers(im.getUsers()+1);
@@ -93,13 +113,7 @@ class Engine {
     }
 public ArrayList<ClothRating> getRecommendedClothes(int num,String type,String size,String color) {
         ArrayList<ClothRating> returnClothes=new ArrayList<>();
-/*
-        for (int i = Data.getData().getOrderedRecommend().size()-1; i>=Data.getData().getOrderedRecommend().size()-num ; i--) {
-            System.out.println(i);
-            returnClothes.add(Data.getData().getOrderedRecommend().get(i));
-        }
-        */
-        System.out.println(size);
+
         int i = 0;
         int j = Data.getData().getOrderedRecommend().size()-1;
         while(i<num){
