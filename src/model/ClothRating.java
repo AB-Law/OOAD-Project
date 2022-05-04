@@ -26,6 +26,10 @@ public class ClothRating implements Comparable {
 
     }
 
+    public int getID() {
+        return id;
+    }
+
     @Override
     public String toString() {
         String string="Clothing ID: "+id+" Avg Rating: "+(ratingSum/userNum);

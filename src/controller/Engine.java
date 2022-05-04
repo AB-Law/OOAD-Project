@@ -1,5 +1,6 @@
-package main;
+package controller;
 
+import view.*;
 import appdata.Data;
 import model.Cloth;
 import model.ClothRating;
@@ -9,6 +10,33 @@ import java.util.Collections;
 import java.util.Iterator;
 
 class Engine {
+    public View view;
+    public Engine(View v) {
+     view = v;
+   //  initView();
+    }
+   
+    public void initController() {
+   
+     view.getEnterButton().addActionListener(e -> {
+         //Create  a string array to store the values
+       String[] s1=new String[3];
+       s1[0]=view.clothType.getItemAt(view.clothType.getSelectedIndex());
+       s1[1]=view.Size.getItemAt(view.Size.getSelectedIndex());
+       s1[2]=view.colo.getItemAt(view.colo.getSelectedIndex());
+      System.out.println(s1[0]);
+      ArrayList<ClothRating> recommendations=getRecommendedClothes(5,s1[0],s1[1],s1[2]); 
+      System.out.print("Please wait. Processing dataset....\n");
+      for (ClothRating m: recommendations){
+          System.out.println(m);
+         
+        }
+    });
+    }
+    public void sendLauncher()
+    {
+       
+    }
 
     Engine(int subjectUser) {
         Data.getData().getSubject().setUserID(subjectUser);
@@ -63,10 +91,52 @@ class Engine {
             }
         }
     }
-    public ArrayList<ClothRating> getRecommendedClothes(int num) {
+public ArrayList<ClothRating> getRecommendedClothes(int num,String type,String size,String color) {
         ArrayList<ClothRating> returnClothes=new ArrayList<>();
+/*
         for (int i = Data.getData().getOrderedRecommend().size()-1; i>=Data.getData().getOrderedRecommend().size()-num ; i--) {
+            System.out.println(i);
             returnClothes.add(Data.getData().getOrderedRecommend().get(i));
+        }
+        */
+        System.out.println(size);
+        int i = 0;
+        int j = Data.getData().getOrderedRecommend().size()-1;
+        while(i<num){
+            ClothRating temporary = Data.getData().getOrderedRecommend().get(j);
+            int id = temporary.getID();
+
+            try {
+                FileReader fr = new FileReader("/Users/akshay/testss/Recommendation-System/src/appdata/clothing_items");
+                BufferedReader br = new BufferedReader(fr);
+                String line = br.readLine();
+                while (line != null) {
+                    String[] tokens = line.split(",");
+                    int flag = 0;
+                    if (tokens[0].equals(Integer.toString(id))) {
+                        if(tokens[2].contains(size)){
+                            if(tokens[2].contains(type)){
+                                if(tokens[2].contains(color)){
+                                    returnClothes.add(Data.getData().getOrderedRecommend().get(j));
+                                    i++;
+                                    flag =1;
+                                }
+                            }
+                        }
+                    }
+                    if(flag==1){
+                        break;
+                    }
+                    line = br.readLine();
+                }
+
+                br.close();
+                fr.close();
+            } catch (IOException e) {
+                System.out.println("Cloth not found");
+            }
+
+            j--;
         }
         return returnClothes;
     }

@@ -11,10 +11,10 @@ def create_dataset():
             var = random.randint(1,17770)
             #create a one decimal float between 1 and 5
             var2 = random.uniform(1,5)
-            var2 = round(var2, 1)
-            if var2==5:
-                #value between 4 and 5
-                var2 = random.uniform(4,4.99)
+            var2 = round(var2, 3)  
+            if var2 == 5:
+                var2 = random.uniform(4,4.9)
+                var2 = round(var2, 3)
             #create a tuple of the current value of i and the random number and the random one precision float
             dataset.append((i,var,var2))
     return dataset

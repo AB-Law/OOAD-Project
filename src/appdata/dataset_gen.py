@@ -5,11 +5,11 @@ def create_clothing_items():
     #Create a list of all the clothing items
     clothing_items = []
     #Create a list of all the clothing types
-    clothing_types = ['Shirt', 'Pants', 'Shoes', 'Hat', 'Glasses', 'Sunglasses', 'T-Shirt', 'Jacket', 'Skirt', 'Dress', 'Belt', 'Socks']
+    clothing_types = ['Shirt', 'Pants', 'Shoes', 'T-Shirt', 'Jacket', 'Skirt', 'Dress', 'Belt', 'Socks']
     #Create a list of all the clothing colors
     clothing_colors = ['Black', 'Blue', 'Red', 'Green', 'Yellow', 'Purple', 'Orange', 'White', 'Gray', 'Pink', 'Brown']
     #Create a list of all the clothing sizes
-    clothing_sizes = ['Small', 'Medium', 'Large', 'X-Large', 'XX-Large', 'XXXL', 'XXXXL']
+    clothing_sizes = ['Small', 'Medium', 'Large', 'X-Large', 'XX-Large', 'XXXL']
     #Create a list of all the clothing materials
     clothing_materials = ['Cotton', 'Polyester', 'Leather', 'Silk', 'Wool', 'Nylon', 'Cotton', 'Polyester', 'Leather', 'Silk', 'Wool', 'Nylon']
     #Create a list of all the clothing styles
@@ -23,17 +23,13 @@ def create_clothing_items():
         clothing_color = random.choice(clothing_colors)
         #Create a random clothing size
         clothing_size = random.choice(clothing_sizes)
-        if(not clothing_type=='Shoes' or not clothing_type=='Glasses' or not clothing_type=='Sunglasses'):
         #Create a random clothing material
-            clothing_material = random.choice(clothing_materials)
+        clothing_material = random.choice(clothing_materials)
         #Create a random clothing style
         clothing_style = random.choice(clothing_styles)
 
-        #Create a string of the clothing item
-        if(not clothing_type=='Shoes' or not clothing_type=='Glasses' or not clothing_type=='Sunglasses'):
-            clothing_item =  clothing_color + ' ' + clothing_material + ' ' + clothing_size + ' ' + clothing_type  + ' ' + clothing_style
-        else:
-            clothing_item = clothing_type + ' ' + clothing_color + ' ' + clothing_size + ' ' + clothing_style
+
+        clothing_item =  clothing_color + ',' + clothing_material + ',' + clothing_size + ',' + clothing_type  + ',' + clothing_style
         #Add the clothing item to the list
         clothing_items.append(clothing_item)
     #Return the list of clothing items
