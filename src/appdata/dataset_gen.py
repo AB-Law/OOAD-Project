@@ -16,6 +16,9 @@ def create_clothing_items():
     clothing_styles = ['Casual', 'Formal', 'Sport', 'Casual', 'Formal', 'Sport', 'Casual', 'Formal', 'Sport', 'Casual', 'Formal', 'Sport']
     #Create a list of all the clothing prices
 
+    gender = ["Male", "Female"]
+    age_groups = ["0-18", "18-38", "38-58","58-78"]
+
     for i in range(0,17770):
         #Create a random clothing type
         clothing_type = random.choice(clothing_types)
@@ -27,9 +30,13 @@ def create_clothing_items():
         clothing_material = random.choice(clothing_materials)
         #Create a random clothing style
         clothing_style = random.choice(clothing_styles)
+        if clothing_type == 'Skirt' or clothing_type == 'Dress':
+            gen = gender[1]
+        else:
+            gen = random.choice(gender)
+        age_group  = random.choice(age_groups)
 
-
-        clothing_item =  clothing_color + ',' + clothing_material + ',' + clothing_size + ',' + clothing_type  + ',' + clothing_style
+        clothing_item =  clothing_color + ' ' + clothing_material + ' ' + clothing_size + ' ' + clothing_type  + ' ' + clothing_style + ',' + gen + ',' + age_group
         #Add the clothing item to the list
         clothing_items.append(clothing_item)
     #Return the list of clothing items

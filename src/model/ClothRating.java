@@ -31,6 +31,28 @@ public class ClothRating implements Comparable {
         return id;
     }
 
+    public String getCloth(){
+        String string="Clothing ID: "+id+" Avg Rating: "+(ratingSum/userNum);
+        try {
+            FileReader fr = new FileReader("/Users/akshay/testss/Recommendation-System/src/appdata/clothing_items");
+            BufferedReader br = new BufferedReader(fr);
+            String line = br.readLine();
+            while (line != null) {
+                String[] tokens = line.split(",");
+                if (tokens[0].equals(Integer.toString(id))) {
+                    System.out.println(tokens[2]);
+                    string = tokens[2] + " Rated: "+ ratingSum/userNum;
+                }
+                line = br.readLine();
+            }
+            br.close();
+            fr.close();
+        } catch (IOException e) {
+            System.out.println("Cloth not found");
+        }
+        return string;
+    }
+
     @Override
     public String toString() {
         String string="Clothing ID: "+id+" Avg Rating: "+(ratingSum/userNum);
